@@ -5,7 +5,7 @@ A predicate routing library.
 <p>
   <a href="#installation">Installation</a> |
   <a href="#getting-started">Getting Started</a> |
-  <a href="/examples">examples</a> |
+  <a href="/examples">examples</a>
 </p>
 
 > [!CAUTION]\
