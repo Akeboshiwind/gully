@@ -44,3 +44,10 @@
            {:status 200 :body "My static page"}))
     (is (= (app {:uri "/home"})
            {:status 200 :body "My static page"}))))
+
+(deftest nested-leaf-route
+  (let [app (ur/router
+              ["/branch"
+               ["/leaf" (constantly (ur/ok "leaf"))]])]
+    (is (= (app {:uri "/branch/leaf"})
+           {:status 200 :body "leaf"}))))

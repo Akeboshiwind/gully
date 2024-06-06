@@ -26,6 +26,7 @@
   [f]
   (fn [node]
     (-> node
+        (assoc :original-predicate (g/predicate node))
         (update :predicate (fn [p]
                              (when p
                                (f p node)))))))
@@ -37,7 +38,7 @@
   (if (string? p)
     (let [path (g/path node)
           leaf? (or (g/leaf? node)
-                    (every? (every-pred (comp fn? g/predicate) g/leaf?)
+                    (every? (every-pred (comp fn? :original-predicate) g/leaf?)
                             (g/children node)))
           uri-so-far (str/join (conj path p))
           patt (re-pattern
